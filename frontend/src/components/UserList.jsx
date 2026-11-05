@@ -7,7 +7,7 @@ import UserCreate from './UserCreate';
 
 
 function UserList() {
-    const portUrl = process.env.PORT || 'http://localhost:4000';
+const portUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
     const [users, setUsers] = useState([]);
     const [showUser, setShowuser] = useState(false);
     const [editUser, setEditUser] = useState(null);

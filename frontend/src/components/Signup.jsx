@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react';
 
 function Signup({ onclose }) {
-    const portUrl = process.env.PORT || 'http://localhost:4000';
+const portUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
     const [formData, setFormData] = useState({
         name: '',
         email: '',
