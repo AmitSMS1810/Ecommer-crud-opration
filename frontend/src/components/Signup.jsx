@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react';
 
 function Signup({ onclose }) {
-
+    const portUrl = process.env.PORT || 'http://localhost:4000';
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -17,7 +17,7 @@ function Signup({ onclose }) {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:4000/auth/signup', formData);
+            const response = await axios.post(`${portUrl}/auth/signup`, formData);
             alert('User created successfully!');
             console.log('Signup response:', response.data);
             onclose();

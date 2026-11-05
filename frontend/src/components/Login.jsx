@@ -3,6 +3,7 @@ import React from 'react'
 import { useState } from 'react';
 
 function Login({ onclose }) {
+  const portUrl = process.env.PORT || 'http://localhost:4000';
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -15,7 +16,7 @@ function Login({ onclose }) {
         e.preventDefault();
         setLoading(true);
       try {
-        const response = await axios.post('http://localhost:4000/auth/login', formData);
+        const response = await axios.post(`${portUrl}/auth/login`, formData);
         alert('User logged in successfully!');
         console.log('Login response:', response.data);
         const accessToken = response.data.data.session.access_token;
