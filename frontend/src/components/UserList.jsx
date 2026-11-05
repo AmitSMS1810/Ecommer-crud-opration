@@ -7,13 +7,14 @@ import UserCreate from './UserCreate';
 
 
 function UserList() {
+    const portUrl = process.env.PORT || 'http://localhost:4000';
     const [users, setUsers] = useState([]);
     const [showUser, setShowuser] = useState(false);
     const [editUser, setEditUser] = useState(null);
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/user/get-users');
+            const response = await axios.get(`${portUrl}/user/get-users`);
             const data = response.data.data;
             console.log('Fetched users:', data);
             setUsers(data);
@@ -28,7 +29,7 @@ function UserList() {
 
     const deleteUser = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:4000/user/delete-user/${id}`);
+            const response = await axios.delete(`${portUrl}/user/delete-user/${id}`);
             console.log('User deletion response:', response.data);
             alert('User deleted successfully!');
             fetchUsers(); // Refresh the user list after deletion

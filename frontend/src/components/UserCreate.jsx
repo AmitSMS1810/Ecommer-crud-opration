@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 function UserCreate({ onclose, editUser }) {
+    const portUrl = process.env.PORT || 'http://localhost:4000';
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
@@ -30,11 +31,11 @@ function UserCreate({ onclose, editUser }) {
         
         try{
             if (editUser) {
-                const response = await axios.put(`http://localhost:4000/user/update-user/${editUser.id}`, formData);
+                const response = await axios.put(`${portUrl}/user/update-user/${editUser.id}`, formData);
                 alert('User updated successfully!');
                 console.log('User submission response:', response.data);
             } else {
-                const response = await axios.post('http://localhost:4000/user/create-user', formData);
+                const response = await axios.post(`${portUrl}/user/create-user`, formData);
                 alert('User created successfully!');
                 console.log('User submission response:', response.data);
             }
