@@ -6,12 +6,13 @@ import UserList from './UserList'
 import axios from 'axios'
 
 function AfterLoginScreen() {
+   const portUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
     const [noOfUsers, setNoOfUsers] = useState(0);
 
     const totalUsers = async () => {
         try{
-     const res = await axios.get('http://localhost:4000/user/total-users');
+     const res = await axios.get(`${portUrl}/user/total-users`);
      setNoOfUsers(res.data.totalUsers);
         }
         catch(error){
