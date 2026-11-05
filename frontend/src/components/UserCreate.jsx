@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 function UserCreate({ onclose, editUser }) {
-    const portUrl = process.env.PORT || 'http://localhost:4000';
+const portUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
